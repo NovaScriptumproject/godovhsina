@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Любимке</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hearts-bg" id="heartsBg"></div>
+<div class="sparkle-bg" id="sparkleBg"></div>
+<div class="confetti-container" id="confettiContainer"></div>
+
+<div class="easter-btn" id="easterBtn" onclick="handleEasterClick()">❤️<div class="counter" id="easterCounter">0</div></div>
+
+<!-- ПАРОЛЬ -->
+<div class="screen active" id="screenPassword">
+  <div class="card">
+    <div class="icon">🔐</div>
+    <h2>Секретный квест</h2>
+    <p class="subtitle">Введи пароль, чтобы начать</p>
+    <input type="password" id="passwordInput" placeholder="· · · ·" maxlength="10" inputmode="numeric" pattern="[0-9]*">
+    <div style="margin-top:16px;"><button class="btn btn-primary" onclick="checkPassword()">Открыть ➜</button></div>
+    <div class="error-msg" id="passwordError"></div>
+  </div>
+</div>
+
+<!-- СТАРТ -->
+<div class="screen" id="screenStart">
+  <div class="card">
+    <div class="icon">💞</div>
+    <h1>4 года – 4 следа</h1>
+    <p class="subtitle">Наша маленькая игра</p>
+    <div class="poem">Четыре года — словно миг,
+Но с каждым днём я к ней привык.
+И в этот день я загадал:
+Пусть ищет клады, чтоб я видал
+Её глаза, горящие огнём,
+Когда найдёт подарок в нём.
+Три тайника — и три сюрприза,
+Ищи их смело, без каприза.
+Готова? Тогда кликай скорей,
+И квест начнётся — верь и ней!</div>
+    <button class="btn btn-primary" onclick="goToStep(1)">Начать ➜</button>
+  </div>
+</div>
+
+<!-- ШАГ 1 -->
+<div class="screen" id="screenStep1">
+  <div class="card">
+    <h2>Шаг первый <span style="color:var(--gold-light)">(1/3)</span></h2>
+    <div class="poem">Теперь твой путь лежит туда,
+Где отражается звезда.
+Где ты себя встречаешь взглядом,
+И мир становится вдруг рядом.
+За ним, за гладью серебристой,
+Лежит подарок мой душистый.
+Он нежен, сладок, словно лето,
+И ждёт прикосновений света.
+Найди его — и первый след
+Откроет дверь в грядущий свет.</div>
+    <button class="btn btn-hint" onclick="showHint(1)">💡 Подсказка</button>
+    <div class="hint-text" id="hint1">Ты смотришь в него каждое утро. Он стоит на окне.</div>
+    <br>
+    <button class="btn btn-primary" onclick="completeStep(1)">✅ Нашла!</button>
+    <div class="progress-bar"><div class="progress-dot filled"></div><div class="progress-dot"></div><div class="progress-dot"></div></div>
+  </div>
+</div>
+
+<!-- ШАГ 2 -->
+<div class="screen" id="screenStep2">
+  <div class="card">
+    <h2>Шаг второй <span style="color:var(--gold-light)">(2/3)</span></h2>
+    <div class="poem">Теперь твой путь лежит туда,
+Где строчки льются, как вода.
+Где лист за листом, как река,
+Несёт слова издалека.
+За этим другом, что молчит,
+Второй подарок твой лежит.
+Он строгий, длинный, словно ночь,
+Но он готов тебе помочь
+Узнать, как нежны могут быть
+Мои ладони, чтоб любить.</div>
+    <button class="btn btn-hint" onclick="showHint(2)">💡 Подсказка</button>
+    <div class="hint-text" id="hint2">Он печатает то, что мы пишем. Загляни за его спину.</div>
+    <br>
+    <button class="btn btn-primary" onclick="completeStep(2)">✅ Нашла!</button>
+    <div class="progress-bar"><div class="progress-dot filled"></div><div class="progress-dot filled"></div><div class="progress-dot"></div></div>
+  </div>
+</div>
+
+<!-- ШАГ 3 -->
+<div class="screen" id="screenStep3">
+  <div class="card">
+    <h2>Шаг третий <span style="color:var(--gold-light)">(3/3)</span></h2>
+    <div class="poem">Теперь твой путь лежит туда,
+Где под столом живёт беда
+Не беда, а наоборот —
+Там клад, что сердце бережёт.
+Где под столом, в тени немой,
+Стоит сундучёк вековой.
+В нём не монеты и не злато,
+А то, что сердцу свято-свято:
+Холст и краски, чтоб вдвоём
+Оставить след на холсте немом.
+Открой его — и ты найдёшь
+То, что навеки заберёшь.</div>
+    <button class="btn btn-hint" onclick="showHint(3)">💡 Подсказка</button>
+    <div class="hint-text" id="hint3">Большой железный ящик под столом. Открой его бок.</div>
+    <br>
+    <button class="btn btn-primary" onclick="completeStep(3)">✅ Нашла!</button>
+    <div class="progress-bar"><div class="progress-dot filled"></div><div class="progress-dot filled"></div><div class="progress-dot filled"></div></div>
+  </div>
+</div>
+
+<!-- ФИНАЛ -->
+<div class="screen" id="screenFinal">
+  <div class="card">
+    <div class="icon">🤲</div>
+    <h1>Наши руки</h1>
+    <div class="poem">На этом холсте мы оставим два следа —
+Один под другим, как у нас навсегда.
+Моя ладонь станет надёжной основой,
+А сверху твоя — словно утро с росой.
+Как будто я держу тебя в своих руках,
+И ты отдыхаешь в моих облаках.
+Пусть краска смешается в общий узор,
+И каждый увидит наш нежный договор.
+Прижми свою руку к моей — и замри,
+Мы вместе оставим частицу души.
+И пусть этот холст навсегда сохранит
+Мгновенье, когда нас двоих мир хранит.</div>
+    <button class="btn btn-primary" onclick="showFinalPhoto()">🎉 Сделать отпечатки!</button>
+  </div>
+</div>
+
+<!-- ПАЗЛ -->
+<div class="puzzle-overlay" id="puzzleOverlay">
+  <div class="puzzle-container">
+    <h2 style="font-size:20px;font-family:'Cormorant Garamond',serif;color:#fff;">Собери пазл!</h2>
+    <div class="puzzle-grid" id="puzzleGrid"></div>
+    <div class="puzzle-success" id="puzzleSuccess">
+      <div class="trophy">✨</div>
+      <p style="font-size:17px;color:rgba(255,255,255,0.7);margin:10px 0;font-family:'Cormorant Garamond',serif;">Отлично собрала!</p>
+      <button class="btn btn-next" onclick="closePuzzle()">Дальше ➜</button>
+    </div>
+  </div>
+</div>
+
+<!-- ФОТО ФИНАЛА -->
+<div class="final-photo-overlay" id="finalPhotoOverlay">
+  <img id="finalPhoto" src="photo4.jpg" alt="photo4" onerror="this.style.display='none'">
+  <div class="thanks-text">Спасибо за 4 года, Сонечка ❤️</div>
+  <button class="btn btn-gold" onclick="closeFinalPhoto()">Перейти к отпечаткам</button>
+</div>
+
+<!-- ОТПЕЧАТКИ -->
+<div class="screen" id="screenImprints" style="display:none;">
+  <div class="card">
+    <div class="icon">🎨</div>
+    <h1>Наши отпечатки</h1>
+    <div class="poem">Теперь бери краски, и мы вместе
+оставим наши отпечатки! ❤️</div>
+    <div style="margin-top:20px;font-size:56px;" class="pulse-hands">🖐️🤚</div>
+  </div>
+</div>
+
+<!-- ПАСХАЛКА -->
+<div class="modal-overlay easter-egg-modal" id="easterEggModal" onclick="if(event.target===this)closeEasterEgg()">
+  <div class="modal-content">
+    <div class="egg-hearts">💖</div>
+    <div class="egg-text">Ты — моя вселенная.<br>Спасибо, что ты есть ❤️</div>
+    <button class="btn btn-primary" onclick="closeEasterEgg()">Закрыть</button>
+  </div>
+</div>
+
+<audio id="bgMusic" loop preload="auto"><source src="background.mp3" type="audio/mpeg"></audio>
+<audio id="hintSound" preload="auto"><source src="dzyng.mp3" type="audio/mpeg"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
